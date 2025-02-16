@@ -16,14 +16,12 @@ namespace MyTestApp.Controllers
             _context = context;
         }
 
-        // Получить всех пользователей
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
         }
 
-        // Получить пользователя по ID
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -35,7 +33,6 @@ namespace MyTestApp.Controllers
             return user;
         }
 
-        // Добавить нового пользователя
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser(User user)
         {
@@ -44,7 +41,6 @@ namespace MyTestApp.Controllers
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
-        // Обновить пользователя
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, User user)
         {
@@ -59,7 +55,6 @@ namespace MyTestApp.Controllers
             return NoContent();
         }
 
-        // Удалить пользователя
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
